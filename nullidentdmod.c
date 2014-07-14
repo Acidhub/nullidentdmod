@@ -87,7 +87,7 @@ void session_timeout( int foo )
 	exit( 0 );
 }
 
-int main( int argc, const char *argv[] )
+int main( int argc, char *argv[] )
 {
 	char		c;
 	int			infd;
@@ -95,7 +95,7 @@ int main( int argc, const char *argv[] )
 	int			response_len;
 	char		response[256];
 	char		request[129];
-	char data[9];
+	char        data[9];
 
 	if( getgid() == 0 ) {
 		fprintf( stderr, "Group id is root, exitting.\n" );
@@ -125,7 +125,12 @@ int main( int argc, const char *argv[] )
 
 		/* format the response */
 		read_random(data, 8);
-		response_len = snprintf( response, sizeof( response ), "%.20s : USERID : UNIX : %.20s\r\n", request, data );
+        if(argv[1] == 0) {
+		    response_len = snprintf( response, sizeof( response ), "%.20s : USERID : UNIX : %.20s\r\n", request, data );
+        }
+        else {
+           response_len = snprintf( response, sizeof( response ), "%.20s : USERID : UNIX : %.20s\r\n", request, argv[1] );
+        }
 		/* send the line */
 		if( !write_response( outfd, response, response_len ) ) {
 			goto done;

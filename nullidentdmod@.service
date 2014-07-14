@@ -1,0 +1,11 @@
+[Unit]
+Description=NullidentdMod service
+
+[Service]
+User=nobody
+ExecStart=/usr/bin/nullidentdmod
+StandardInput=socket
+StandardOutput=socket
+
+[Install]
+WantedBy=multi-user.target

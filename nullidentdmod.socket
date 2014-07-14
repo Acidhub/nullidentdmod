@@ -1,0 +1,9 @@
+[Unit]
+Description=Socket for identd (NullidentdMod)
+
+[Socket]
+ListenStream=113
+Accept=yes
+
+[Install]
+WantedBy=sockets.target
