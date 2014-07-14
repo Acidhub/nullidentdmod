@@ -5,6 +5,7 @@ OBJ = nullidentdmod.o
 TARGET = nullidentdmod
 PREFIX = /usr/local
 BINDIR = $(PREFIX)/bin
+UNITDIR= /usr/lib/systemd/system
 
 all: $(TARGET)
 
@@ -16,5 +17,7 @@ clean:
 
 install: all
 	$(INSTALL) -D -s $(TARGET) $(DESTDIR)$(BINDIR)/$(TARGET)
+	$(INSTALL) -D $(TARGET).socket $(DESTDIR)$(UNITDIR)/$(TARGET).socket
+	$(INSTALL) -D $(TARGET)@.service $(DESTDIR)$(UNITDIR)/$(TARGET)@.service
 
 .PHONY: all install clean
