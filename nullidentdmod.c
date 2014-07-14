@@ -27,7 +27,6 @@ int write_response( int fd, char *response, int len )
 
 int read_request( int fd, char *request, int maxlen )
 {
-	int		retval;
 	char	c;
 	int		bytesread = 0;
 
@@ -60,7 +59,6 @@ int read_request( int fd, char *request, int maxlen )
 int read_random(char *buffer, size_t size)
 {
 	char *p = buffer;
-	int data_read=0;
 	if (!buffer || size < 2) return -1;
 	FILE *randfd = fopen("/dev/urandom", "r");
 	if (!randfd) { /* Fall back to /dev/random */
@@ -75,11 +73,7 @@ int read_random(char *buffer, size_t size)
 		sprintf(p, "%02x", c);
 		p += 2;
 	}
-
-ret:
-	fclose(randfd);
-	return data_read;
-
+return 1;
 }
 
 void session_timeout( int foo )
@@ -89,7 +83,6 @@ void session_timeout( int foo )
 
 int main( int argc, char *argv[] )
 {
-	char		c;
 	int			infd;
 	int			outfd;
 	int			response_len;
