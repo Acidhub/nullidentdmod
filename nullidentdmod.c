@@ -113,7 +113,7 @@ int main( int argc, char *argv[] )
 		/* read the request */
 		if(!read_request(infd, request, sizeof(request))) {
 			/* error or timed out */
-			goto done;
+			return 0;
 		}
 
 		/* format the response */
@@ -126,11 +126,8 @@ int main( int argc, char *argv[] )
         }
 		/* send the line */
 		if( !write_response( outfd, response, response_len ) ) {
-			goto done;
+			return 0;
 		}
 	}
-
-done:
-	return 0;
 }
 
