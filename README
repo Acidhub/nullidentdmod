@@ -41,8 +41,8 @@ Installation
 ------------
 
 NullidentdMod must be run from systemd.
-This is archieved by enabling nullidentdmod@.socket:
-# systemctl enable nullidentdmod@.socket
+This is archieved by enabling nullidentdmod.socket:
+# systemctl enable nullidentdmod.socket
 
 
 As is, NullidentdMod will return always a random userid.
