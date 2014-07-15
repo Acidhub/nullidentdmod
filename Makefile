@@ -17,7 +17,7 @@ clean:
 
 install: all
 	$(INSTALL) -D -s $(TARGET) $(DESTDIR)$(BINDIR)/$(TARGET)
-	$(INSTALL) -D $(TARGET).socket $(DESTDIR)$(UNITDIR)/$(TARGET).socket
-	$(INSTALL) -D $(TARGET)@.service $(DESTDIR)$(UNITDIR)/$(TARGET)@.service
+	$(INSTALL) -Dm644 $(TARGET).socket $(DESTDIR)$(UNITDIR)/$(TARGET).socket
+	$(INSTALL) -Dm644 $(TARGET)@.service $(DESTDIR)$(UNITDIR)/$(TARGET)@.service
 
 .PHONY: all install clean
