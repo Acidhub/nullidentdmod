@@ -31,7 +31,7 @@ void read_request(int fd, char *request, int maxlen) {
     /* read until \n */
     while(bytesread < maxlen - 1) {
         if(read(fd, &c, 1) != 1) {
-            exit(EXIT_FAILURE)
+            exit(EXIT_FAILURE);
         }
 
         if(c == '\n') {
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
         memset(data, 0, sizeof(data));
         
         /* read the request */
-        read_request(infd, request, sizeof(request))
+        read_request(infd, request, sizeof(request));
 
         if(argv[1] == 0) {
             read_random(data, 8);
