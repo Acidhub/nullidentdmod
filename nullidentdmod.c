@@ -125,12 +125,12 @@ int main(int argc, char *argv[]) {
 
         if(argv[1] == 0) {
             read_random(data, 8);
-            response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, data);
         } else {
-            response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, argv[1]);
+            sprintf(data, "%s", argv[1]);
         }
-        
+
         /* send the line */
+        response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, data);
         write_response(outfd, response, response_len);
     }
     return EXIT_SUCCESS;
