@@ -7,21 +7,19 @@
 
 #define SESSION_TIMEOUT 10
 
-int write_response(int fd, char *response, int len) {
+void write_response(int fd, char *response, int len) {
     int retval;
     int byteswritten = 0;
 
     while(byteswritten < len) {
         retval = write(fd, response + byteswritten, len - byteswritten);
+
         if(retval <= 0) {
-            /* error */
-            return 0;
+            exit(EXIT_FAILURE);
         }
+
         byteswritten += retval;
     }
-
-    /* success */
-    return 1;
 }
 
 void read_request(int fd, char *request, int maxlen) {
@@ -133,9 +131,8 @@ int main(int argc, char *argv[]) {
         }
         
         /* send the line */
-        if(!write_response(outfd, response, response_len)) {
-            return 0;
-        }
+        write_response(outfd, response, response_len);
     }
+    return EXIT_SUCCESS;
 }
 
