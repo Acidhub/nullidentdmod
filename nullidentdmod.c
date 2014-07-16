@@ -24,15 +24,14 @@ int write_response(int fd, char *response, int len) {
     return 1;
 }
 
-int read_request(int fd, char *request, int maxlen) {
+void read_request(int fd, char *request, int maxlen) {
     char c;
     int bytesread = 0;
 
     /* read until \n */
     while(bytesread < maxlen - 1) {
         if(read(fd, &c, 1) != 1) {
-            /* error */
-            return 0;
+            exit(EXIT_FAILURE)
         }
 
         if(c == '\n') {
@@ -48,11 +47,9 @@ int read_request(int fd, char *request, int maxlen) {
         /* strip trailing \r */
         bytesread -= 1;
     }
+
     /* null terminate */
     request[bytesread] = '\0';
-
-    /* success */
-    return 1;
 }
 
 int read_random(char *buffer, size_t size) {
@@ -111,10 +108,7 @@ int main(int argc, char *argv[]) {
         memset(data, 0, sizeof(data));
         
         /* read the request */
-        if(!read_request(infd, request, sizeof(request))) {
-            /* error or timed out */
-            return 0;
-        }
+        read_request(infd, request, sizeof(request))
 
         /* format the response */
         read_random(data, 8);
