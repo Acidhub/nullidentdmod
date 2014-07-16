@@ -85,8 +85,8 @@ void read_random(char *buffer, size_t size) {
 }
 
 void signal_handler(int signum) {
-    fprintf( stderr, "Session timeout.\n" );
-    exit( EXIT_FAILURE );
+    fprintf(stderr, "Session timeout.\n");
+    exit(EXIT_FAILURE);
 }
 
 // C99 standard
