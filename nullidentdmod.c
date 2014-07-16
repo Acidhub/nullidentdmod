@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-#define SESSION_TIMEOUT 20
+#define SESSION_TIMEOUT 10
 
 int write_response( int fd, char *response, int len )
 {
@@ -76,11 +76,13 @@ int read_random(char *buffer, size_t size)
 return 1;
 }
 
-void session_timeout( int foo )
+void signal_handler( int signum )
 {
-	exit( 0 );
+    fprintf( stderr, "Session timeout.\n" );
+	exit( EXIT_FAILURE );
 }
 
+// C99 standard
 int main( int argc, char *argv[] )
 {
 	int			infd;
@@ -92,18 +94,18 @@ int main( int argc, char *argv[] )
 
 	if( getgid() == 0 ) {
 		fprintf( stderr, "Group id is root, exitting.\n" );
-		return 1;
+		return EXIT_FAILURE;
 	}
 	if( getuid() == 0 ) {
 		fprintf( stderr, "User id is root, exiting.\n" );
-		return 1;
+		return EXIT_FAILURE;
 	}
 
 	infd = fileno( stdin );
 	outfd = fileno( stdout );
 
 	// set the session timeout
-	signal( SIGALRM, session_timeout );
+	signal( SIGALRM, signal_handler );
 	alarm( SESSION_TIMEOUT );
 
 	for( ;; ) {
