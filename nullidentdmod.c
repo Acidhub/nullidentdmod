@@ -52,23 +52,38 @@ void read_request(int fd, char *request, int maxlen) {
     request[bytesread] = '\0';
 }
 
-int read_random(char *buffer, size_t size) {
+void read_random(char *buffer, size_t size) {
     char *p = buffer;
-    if (!buffer || size < 2) return -1;
-    FILE *randfd = fopen("/dev/urandom", "r");
-    if (!randfd) { /* Fall back to /dev/random */
-        randfd = fopen("/dev/random", "r");
-        if (!randfd) return -1;
+
+    if (!buffer || size < 2) {
+        exit(EXIT_FAILURE);
     }
+
+    FILE *randfd = fopen("/dev/urandom", "r");
+
+    /* Fallback to /dev/random
+       if /dev/urandom not found */
+    if (!randfd) {
+        randfd = fopen("/dev/random", "r");
+        if (!randfd) {
+            exit(EXIT_FAILURE);   
+        }
+    }
+
     while (strlen(buffer) < size) {
         int c = fgetc(randfd);
-        if (ferror(randfd) != 0 || feof(randfd) != 0) { break; }
-        if (c < 1) continue;
+
+        if (ferror(randfd) != 0 || feof(randfd) != 0) {
+            break;
+        }
+
+        if (c < 1) { 
+            continue;
+        }
 
         sprintf(p, "%02x", c);
         p += 2;
     }
-return 1;
 }
 
 void signal_handler(int signum) {
@@ -110,10 +125,8 @@ int main(int argc, char *argv[]) {
         /* read the request */
         read_request(infd, request, sizeof(request))
 
-        /* format the response */
-        read_random(data, 8);
-
         if(argv[1] == 0) {
+            read_random(data, 8);
             response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, data);
         } else {
             response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, argv[1]);
