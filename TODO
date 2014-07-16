@@ -1,0 +1,4 @@
+test length of args (data is a char[9]), raise error if large
+implement -h/--help function (good behaviour set -r/--random and -u/--user)
+printf error messages on stderr before all EXIT_FAILUREs
+for(;;) or while(1)? That is the question.
