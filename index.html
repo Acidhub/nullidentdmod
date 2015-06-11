@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>NullidentdMod by BlackXT</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/BlackXT/nullidentdmod">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>NullidentdMod</h1>
+            <h2>Bare simple and minimal identd server that just replies with a random string or customized userid.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/BlackXT/nullidentdmod/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/BlackXT/nullidentdmod/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h2>
+<a id="nullidentdmod" class="anchor" href="#nullidentdmod" aria-hidden="true"><span class="octicon octicon-link"></span></a>NullidentdMod</h2>
+
+<p>Version 1.1<br>
+NullidentdMod 2014 by AcidHub <a href="mailto:acidhub@craft.net.br">acidhub@craft.net.br</a>   </p>
+
+<h2>
+<a id="what" class="anchor" href="#what" aria-hidden="true"><span class="octicon octicon-link"></span></a>What</h2>
+
+<p>NullidentdMod is intended to be a <strong>bare minimum</strong> identd server.</p>
+
+<p>The program implements the auth protocol from <a href="http://www.rfc-base.org/rfc-1413.html">RFC 1413</a>.  This protocol is used to identify active TCP connections.  It depends on the trustworthiness of the server and as such is completely useless as a method of identification.  Unfortunately some applications still require that an identd server is available to query about incoming connections.  nullidentd implements the absolute minimum server to allow these applications to function. It returns a fake response for any request.</p>
+
+<p>The auth port is TCP 113.</p>
+
+<h2>
+<a id="goals" class="anchor" href="#goals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goals</h2>
+
+<p>NullidentdMod is a single source file less than 150 lines long.  It is intended to be so simple that it is probably bug free.  It can certainly be understood in its entirety with no difficulty.  It should also be somewhat immune to denial of service attacks by following strict timeouts on idle clients.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>NullidentdMod <strong>must</strong> be run from systemd.
+This is archieved by enabling nullidentdmod.socket:</p>
+
+<pre><code># systemctl enable nullidentdmod.socket
+</code></pre>
+
+<p>As is, NullidentdMod will return always a random userid.</p>
+
+<p>For assign a custom userid, copy nullidentdmod.service to /etc/systemd/system/:</p>
+
+<pre><code># cp /usr/lib/systemd/system/nullidentdmod@.service /etc/systemd/system/
+</code></pre>
+
+<p>Edit the unit:</p>
+
+<pre><code># vim /etc/systemd/system/nullidentdmod@.service
+</code></pre>
+
+<p>At line 6, write desired userid:</p>
+
+<pre><code>ExecStart=/usr/bin/nullidentdmod &lt;userid&gt;
+</code></pre>
+
+<p>Obviously where is &lt;userid&gt; you put your custom userid</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/BlackXT">BlackXT</a> can be found on <a href="https://github.com/BlackXT/nullidentdmod">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
