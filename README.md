@@ -1,11 +1,11 @@
 nullidentdMod
 ----------
 
-Version 1.0
-Copyright 1999 Brian Young <bayoung@acm.org>
-Modified 2011 by dxtr
+Version 1.1   
+Copyright 1999 Brian Young <bayoung@acm.org>   
+Modified 2011 by dxtr   
 
-NullidentdMod 2014 by AcidHub <acidhub@craft.net.br>
+NullidentdMod 2014 by AcidHub <acidhub@craft.net.br>   
 
 What
 ----
