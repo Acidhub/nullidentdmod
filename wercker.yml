@@ -1,0 +1,10 @@
+box: base/archlinux
+build:
+  steps:
+    - script:
+        name: Building NullidentdMod
+        code: |
+          sed -i 's/Required/Never/g' /etc/pacman.conf
+          pacman -Sy --noconfirm make libunistring gcc
+          make
+          make install

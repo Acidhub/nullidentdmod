@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/a0670a09873f299dffc344f719cc7a83/m "wercker status")](https://app.wercker.com/project/bykey/a0670a09873f299dffc344f719cc7a83)
+
 nullidentdMod
 ----------
 
