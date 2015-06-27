@@ -1,40 +1,35 @@
-[![wercker status](https://app.wercker.com/status/a0670a09873f299dffc344f719cc7a83/m "wercker status")](https://app.wercker.com/project/bykey/a0670a09873f299dffc344f719cc7a83)
+> [![wercker status](https://app.wercker.com/status/9c3a8e576fd1d5c13eff366c14841bec/s "wercker status")](https://app.wercker.com/project/bykey/9c3a8e576fd1d5c13eff366c14841bec)
+Powered by [wercker](http://wercker.com/)
 
-nullidentdMod
-----------
+# **NullidentdMod**
 
 Version 1.1   
 Copyright 1999 Brian Young <bayoung@acm.org>   
-Modified 2011 by dxtr   
+Modified 2011 by dxtr
 
-NullidentdMod 2014 by AcidHub <acidhub@craft.net.br>   
+****NullidentdMod**** 2014 by AcidHub <contact@acidhub.click>   
+[**NullidentdMod** Page](http://git.acidhub.click/**NullidentdMod**/)
 
-What
-----
+## What
 
-NullidentdMod is intended to be a bare minimum identd server.
+****NullidentdMod**** is intended to be a bare minimum identd server.
 
 The program implements the auth protocol from [RFC 1413](http://www.rfc-base.org/rfc-1413.html).  This protocol is used to identify active TCP connections.  It depends on the trustworthiness of the server and as such is completely useless as a method of identification.  Unfortunately some applications still require that an identd server is available to query about incoming connections.  nullidentd implements the absolute minimum server to allow these applications to function. It returns a fake response for any request.
 
 The auth port is TCP 113.
 
+## Goals
 
-Goals
------
+**NullidentdMod** is a single source file less than 150 lines long.  It is intended to be so simple that it is probably bug free.  It can certainly be understood in its entirety with no difficulty.  It should also be somewhat immune to denial of service attacks by following strict timeouts on idle clients.
 
-NullidentdMod is a single source file less than 150 lines long.  It is intended to be so simple that it is probably bug free.  It can certainly be understood in its entirety with no difficulty.  It should also be somewhat immune to denial of service attacks by following strict timeouts on idle clients.
+## Installation
 
-
-Installation
-------------
-
-NullidentdMod must be run from systemd.
+**NullidentdMod** must be run from systemd.
 This is archieved by enabling nullidentdmod.socket:
 
     # systemctl enable nullidentdmod.socket
 
-
-As is, NullidentdMod will return always a random userid.
+As is, **NullidentdMod** will return always a random userid.
 
 For assign a custom userid, copy nullidentdmod.service to /etc/systemd/system/:
 
@@ -48,5 +43,4 @@ At line 6, write desired userid:
 
     ExecStart=/usr/bin/nullidentdmod <userid>
 
-Obviously where <userid> you put your custom userid
-
+Obviously where is `<userid>` you put your custom userid
