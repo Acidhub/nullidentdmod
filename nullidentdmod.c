@@ -34,7 +34,7 @@ void write_response(int fd, char *response, int len) {
         retval = write(fd, response + byteswritten, len - byteswritten);
 
         if(retval <= 0) {
-            exit(EXIT_FAILURE);
+            break;
         }
 
         byteswritten += retval;
@@ -45,10 +45,10 @@ void read_request(int fd, char *request, int maxlen) {
     char c;
     int bytesread = 0;
 
-    /* read until \n */
+    /* read until end of bytes or \n */
     while(bytesread < maxlen - 1) {
         if(read(fd, &c, 1) != 1) {
-            exit(EXIT_FAILURE);
+            exit(EXIT_SUCCESS);
         }
 
         if(c == '\n') {
@@ -83,6 +83,7 @@ void read_random(char *buffer, size_t size) {
     if (!randfd) {
         randfd = fopen("/dev/random", "r");
         if (!randfd) {
+            fprintf(stderr, "Not enough random data, it's possible?.\n");
             exit(EXIT_FAILURE);   
         }
     }
@@ -116,11 +117,6 @@ int main(int argc, char *argv[]) {
     char response[256];
     char request[129];
     char data[9];
-
-    if(getgid() == 0) {
-        fprintf(stderr, "Group id is root, exitting.\n");
-        return EXIT_FAILURE;
-    }
 
     if(getuid() == 0) {
         fprintf(stderr, "User id is root, exiting.\n");
