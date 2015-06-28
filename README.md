@@ -3,16 +3,16 @@ Powered by [wercker](http://wercker.com/)
 
 # **NullidentdMod**
 
-Version 1.1   
+Version 1.2   
 Copyright 1999 Brian Young <bayoung@acm.org>   
 Modified 2011 by dxtr
 
-****NullidentdMod**** 2014 by AcidHub <contact@acidhub.click>   
-[**NullidentdMod** Page](http://git.acidhub.click/**NullidentdMod**/)
+***NullidentdMod*** 2014 by AcidHub <contact@acidhub.click>   
+[**NullidentdMod** Page](http://git.acidhub.click/nullidentdmod/)
 
 ## What
 
-****NullidentdMod**** is intended to be a bare minimum identd server.
+***NullidentdMod*** is intended to be a bare minimum identd server.
 
 The program implements the auth protocol from [RFC 1413](http://www.rfc-base.org/rfc-1413.html).  This protocol is used to identify active TCP connections.  It depends on the trustworthiness of the server and as such is completely useless as a method of identification.  Unfortunately some applications still require that an identd server is available to query about incoming connections.  nullidentd implements the absolute minimum server to allow these applications to function. It returns a fake response for any request.
 
