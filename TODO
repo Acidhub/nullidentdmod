@@ -1,4 +1,8 @@
 test length of args (data is a char[9]), raise error if large
+    \--> REJECTED: Useless
 implement -h/--help function (good behaviour set -r/--random and -u/--user)
+    \--> REJECTED: It's a CLI program
 printf error messages on stderr before all EXIT_FAILUREs
+    \--> **ACEPTED**
 for(;;) or while(1)? That is the question.
+    \--> REJECTED: Who cares?
