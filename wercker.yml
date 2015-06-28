@@ -6,3 +6,4 @@ build:
         code: |
           make
           make install
+          make clean
