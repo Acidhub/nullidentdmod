@@ -3,7 +3,7 @@ Powered by [wercker](http://wercker.com/)
 
 # **NullidentdMod**
 
-Version 1.2   
+Version 1.3   
 Copyright 1999 Brian Young <bayoung@acm.org>   
 Modified 2011 by dxtr
 
