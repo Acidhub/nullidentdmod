@@ -147,6 +147,7 @@ int main(int argc, char *argv[]) {
         /* send the line */
         response_len = snprintf(response, sizeof(response), "%.20s : USERID : UNIX : %.20s\r\n", request, data);
         write_response(outfd, response, response_len);
+        break; // send only one time and close
     }
     return EXIT_SUCCESS;
 }
