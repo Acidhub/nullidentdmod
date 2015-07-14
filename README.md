@@ -1,5 +1,5 @@
-> [![wercker status](https://app.wercker.com/status/9c3a8e576fd1d5c13eff366c14841bec/s "wercker status")](https://app.wercker.com/project/bykey/9c3a8e576fd1d5c13eff366c14841bec)
-Powered by [wercker](http://wercker.com/)
+> [![wercker status](https://app.wercker.com/status/9c3a8e576fd1d5c13eff366c14841bec/s "wercker status")](https://app.wercker.com/project/bykey/9c3a8e576fd1d5c13eff366c14841bec) - Wercker    
+> [![Build Status](https://travis-ci.org/Acidhub/nullidentdmod.svg?branch=master)](https://travis-ci.org/Acidhub/nullidentdmod) - Travis-CI
 
 # **NullidentdMod**
 
